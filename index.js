@@ -12,10 +12,27 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials.map((str) =>
-    str
-      .split(" ")
-      .map((word) => word[0].toUpperCase() + word.slice(1))
-      .join(" ")
-  );
+  // map in map -- fancy
+  // return tutorials.map((str) =>
+  //   str
+  //     .split(" ")
+  //     .map((word) => word[0].toUpperCase() + word.slice(1))
+  //     .join(" ")
+  // );
+
+  // for loop in map -- not as fancy
+  // option 1 reassign origional arr in loop
+  // option 2 push capital words into newArr
+  return tutorials.map((str) => {
+    const arr = str.split(" ");
+    // let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      let [first, ...rest] = arr[i].split("");
+      arr[i] = first.toUpperCase() + rest.join("");
+      // let capitalized = first.toUpperCase() + rest.join("");
+      // newArr.push(capitalized);
+    }
+    return arr.join(" ");
+    // return newArr.join(" ");
+  });
 };
